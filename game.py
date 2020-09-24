@@ -1,7 +1,9 @@
 # Create your Game class logic in here.
 class Game:
-    pass
-
+    def __init__(self):
+        self.missed = missed
+        self.phrase = phrase
+        
 
 
 
@@ -14,4 +16,6 @@ def GameIntro():
         pass
     elif option.upper() == 'Q':
         print("Thank you for playing!")
+
+GameIntro()
 
