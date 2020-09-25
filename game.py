@@ -13,7 +13,7 @@ class Game:
         print("                              N- New Game\n                              Q- Quit\n\n")
         option =input("Press 'N' to start a new game or 'Q' to quit: ")
         if option.upper() == 'N':
-            #Start new Game
+            #start game
             pass
         elif option.upper() == 'Q':
             print("Thank you for playing!")
