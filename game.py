@@ -5,7 +5,7 @@ class Game:
     def __init__(self):
         self.missed = 0
         self.phrases = ["Prune Juice A Warriors Drink", "Live long and prosper", "Resistance is Futile", "Theres Coffee in that Nebula", "Im a Doctor not an escalator", "Today is a good day to die", "There are four lights", "Never allow family to stand \n in the way of opportunity"]
-        self.active_phrase = None
+        self.active_phrase = self.get_random_phrase()
         self.guesses = [" "]
 
     def GameIntro(self):
