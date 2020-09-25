@@ -19,8 +19,8 @@ class Game:
             print("Thank you for playing!")
 
     def get_random_phrase(self):
-        self.num = random.randrange(0, 28)
+        self.num = random.randrange(0, 26)
         return self.phrases[self.num]
 
-game = Game()
-print(len(game.phrases))
+# game = Game()
+# print(len(game.phrases))
