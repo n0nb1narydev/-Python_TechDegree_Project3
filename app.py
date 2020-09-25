@@ -7,6 +7,9 @@ from phrase import Phrase
 
 # Create your Dunder Main statement.
 if __name__ == "__main__":
-# Inside Dunder Main:
+    def print_phrase(phrase_object):
+        print(f"The phrase is: {phrase_object}")
+
     game = Game()
     # game.GameIntro()
+    print_phrase(game.get_random_phrase())
