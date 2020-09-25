@@ -9,7 +9,4 @@ from phrase import Phrase
 if __name__ == "__main__":
 # Inside Dunder Main:
     game = Game()
-    phrase = Phrase()
-## Create an instance of your Game class
-## Start your game by calling the instance method that starts the game loop
-    game.GameIntro()
+    # game.GameIntro()

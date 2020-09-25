@@ -1,8 +1,10 @@
 # Create your Game class logic in here.
+import random
+
 class Game:
     def __init__(self):
         self.missed = 0
-        self.phrases = ['Prune Juice: A Warriors Drink','Live long and prosper','Resistance is Futile',"There's Coffee in that Nebula","I'm a Doctor not an escalator",'Today is a good day to die.','There are four lights!','Never allow family to stand \n in the way of opportunity.']
+        self.phrases = ["Prune Juice A Warriors Drink", "Live long and prosper", "Resistance is Futile", "Theres Coffee in that Nebula", "Im a Doctor not an escalator", "Today is a good day to die", "There are four lights", "Never allow family to stand \n in the way of opportunity"]
         self.active_phrase = None
         self.guesses = [" "]
 
@@ -15,5 +17,11 @@ class Game:
             pass
         elif option.upper() == 'Q':
             print("Thank you for playing!")
+
+    def get_random_phrase(self):
+        self.num = random.randrange(0, 8)
+        return self.phrases[self.num]
+
+
 
 
