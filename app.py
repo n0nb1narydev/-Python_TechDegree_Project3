@@ -13,4 +13,5 @@ if __name__ == "__main__":
     game = Game()
     # game.GameIntro()
     # print_phrase(game.get_random_phrase())
-    # print(game.active_phrase.lower())
+    # 
+    print(game.active_phrase.lower())
