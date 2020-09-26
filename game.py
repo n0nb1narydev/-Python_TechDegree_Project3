@@ -1,10 +1,38 @@
 import random
+from phrase import Phrase
 
 class Game:
 
     def __init__(self):
         self.missed = 0
-        self.phrases = ["Prune Juice A Warriors Drink", "Live long and prosper", "Resistance is Futile", "Theres Coffee in that Nebula", "Im a Doctor not an escalator", "Today is a good day to die", "There are four lights", "Never allow family to stand \n in the way of opportunity", "shut up Wesley", "I am Locutus of Borg", "space the final frontier", "These are the voyages of the starship enterprise", "explore strange new worlds", "seek out new life and new civilizations", "to boldly go where no one has gone before", "you are my sunshine", "hes been stricken by the pon farr", "comfort is irrelevant were here to work", "please state the nature of the medical emergency", "this isnt part of my program", "i have and always shall be your friend", "hes dead jim", "beam me up scotty", "this is highly illogical", "the needs of the many outweigh\n the needs of the few or the one", "infinite diversity in infinite combinations"]
+        self.phrases = [
+            Phrase("Prune Juice A Warriors Drink"), 
+            Phrase("Live long and prosper"), 
+            Phrase("Resistance is Futile"), 
+            Phrase("Theres Coffee in that Nebula"), 
+            Phrase("Im a Doctor not an escalator"), 
+            Phrase("Today is a good day to die"), 
+            Phrase("There are four lights"), 
+            Phrase("Never allow family to stand \nin the way of opportunity"), 
+            Phrase("shut up Wesley"), 
+            Phrase("I am Locutus of Borg"), 
+            Phrase("space the final frontier"), 
+            Phrase("These are the voyages of the starship enterprise"), 
+            Phrase("explore strange new worlds"), 
+            Phrase("seek out new life and new civilizations"), 
+            Phrase("to boldly go where no one has gone before"), 
+            Phrase("you are my sunshine"), 
+            Phrase("hes been stricken by the pon farr"),
+            Phrase("comfort is irrelevant were here to work"), 
+            Phrase("please state the nature of the medical emergency"), 
+            Phrase("this isnt part of my program"), 
+            Phrase("i have and always shall be your friend"), 
+            Phrase("hes dead jim"), 
+            Phrase("beam me up scotty"), 
+            Phrase("this is highly illogical"), 
+            Phrase("the needs of the many outweigh\nthe needs of the few or the one"), 
+            Phrase("infinite diversity in infinite combinations"),
+            ]
         self.active_phrase = self.get_random_phrase()
         self.guesses = [" "]
 
