@@ -11,7 +11,5 @@ if __name__ == "__main__":
     #     print(f"The phrase is: {phrase_object}")
 
     game = Game()
-    game.GameIntro()
-    # print(game.active_phrase.phrase)
-    # game.active_phrase.display(game.guesses)
+    game.gameintro()
 

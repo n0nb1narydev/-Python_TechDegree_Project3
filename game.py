@@ -36,12 +36,12 @@ class Game:
         self.active_phrase = self.get_random_phrase()
         self.guesses = [" "]
 
-    def GameIntro(self):
+    def gameintro(self):
         print("          ______ _______ ______ ______    _______ ______  ______ __  __\n         / __  //__  __// __  // __  /   /__  __// __  / / ____// / / /\n        / / /_/   / /  / /_/ // /_/ /      / /  / /_/ / / /__  / //'/'\n        _\ \     / /  / __  //   __/      / /  /   __/ / __ / /  '/'\n      / /_/ /   / /  / / / // /\ \       / /  / /\ \  / /___ / /\ \ \n     /_____/   /_/  /_/ /_//_/  \_\     /_/  /_/  \_\/_____//_/  \_\ \n\n                         P H R A S E  H U N T E R\n\n     .--.      .-'.      .--.      .--.      .--.      .--.      .`-.      .--.\n:::::.\::::::::.\::::::::.\::::::::.\::::::::.\::::::::.\::::::::.\::::::::.\ \n'      `--'      `.-'      `--'      `--'      `--'      `-.'      `--'      `\n\n")
         print("                              N- New Game\n                              Q- Quit\n\n")
         option =input("Press 'N' to start a new game or 'Q' to quit: ")
         if option.upper() == 'N':
-            #start game
+            self.start()
             pass
         elif option.upper() == 'Q':
             print("Thank you for playing!")
@@ -49,6 +49,13 @@ class Game:
     def get_random_phrase(self):
         self.num = random.randrange(0, 26)
         return self.phrases[self.num]
+
+    def start(self):
+        print(f"Number missed: {self.missed}\n\n")
+        self.active_phrase.display(self.guesses)
+
+
+
 
 # game = Game()
 # print(len(game.phrases))
