@@ -60,14 +60,19 @@ class Game:
             self.guesses.append(self.user_guess)
             if not self.active_phrase.check_guess(self.user_guess):
                 self.lives_left -= 1
-        if self.lives_left == 0:
-            print("Thanks for playing!")
+        self.game_over()
+
 
     def get_guess(self):
         self.user_guess = input("\n\nEnter a letter: ")
         return self.user_guess
 
-
+    def game_over(self):
+        if self.lives_left == 0: 
+            print("Thanks for playing!")
+        else:
+            print(f"You guessed the phrase: {self.active_phrase.phrase}")
+            print("  ____              _       _ \n / __ \            | |     | |\n| |  | | __ _ _ __ | | __ _| |\n| |  | |/ _` | '_ \| |/ _` | |\n| |__| | (_| | |_) | | (_| |_|\n \___\_\\__,_| .__/|_|\__,_(_)\n             | |              \n             |_|              \n\n         S U C C E S S!")
 
 # game = Game()
 # print(len(game.phrases))
