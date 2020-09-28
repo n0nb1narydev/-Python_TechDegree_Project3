@@ -69,7 +69,7 @@ class Game:
 
     def game_over(self):
         if self.lives_left == 0: 
-            print("Thanks for playing!")
+            print("\n      )      COMPUTER                                      \n     (                                                     \n      )        TEA                                         \n  _.-~(~-.                                                 \n (@\`---'/.      EARL GREY                                )\n('  `._.'  `)                                            ( \n `-..___..-'       HOT                                    )\n                                              .-.,--^--.  _\n                                              \\| `---' |//\n                                               \|        / \n                                               _\_______/_ \n\n     H A V E  S O M E  T E A  A N D  T R Y  A G A I N!")
         else:
             print(f"You guessed the phrase: {self.active_phrase.phrase}")
             print("  ____              _       _ \n / __ \            | |     | |\n| |  | | __ _ _ __ | | __ _| |\n| |  | |/ _` | '_ \| |/ _` | |\n| |__| | (_| | |_) | | (_| |_|\n \___\_\\__,_| .__/|_|\__,_(_)\n             | |              \n             |_|              \n\n         S U C C E S S!")
