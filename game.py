@@ -1,10 +1,11 @@
 import random
+import time
 from phrase import Phrase
 
 class Game:
 
     def __init__(self):
-        self.missed = 0
+        self.lives_left = 5
         self.phrases = [
             Phrase("Prune Juice A Warriors Drink"), 
             Phrase("Live long and prosper"), 
@@ -52,16 +53,21 @@ class Game:
         return self.phrases[self.num]
 
     def start(self):
-        while(self.phrase_complete == False):
-            print(f"\nNumber missed: {self.missed}\n\n")
+        while(self.lives_left > 0):
+            print(f"Lives Left: {self.lives_left}\n\n")
             self.active_phrase.display(self.guesses)
             self.user_guess = self.get_guess()
             self.guesses.append(self.user_guess)
+            if not self.active_phrase.check_guess(self.user_guess):
+                self.lives_left -= 1
+        if self.lives_left == 0:
+            print("Thanks for playing!")
+            time.sleep(2)
+            self.game_intro()
 
     def get_guess(self):
         self.user_guess = input("\n\nEnter a letter: ")
         return self.user_guess
-
 
 
 
