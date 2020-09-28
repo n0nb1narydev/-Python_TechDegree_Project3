@@ -53,7 +53,7 @@ class Game:
         return self.phrases[self.num]
 
     def start(self):
-        while(self.lives_left > 0):
+        while(self.lives_left > 0 and not self.active_phrase.check_complete(self.guesses)):
             print(f"Lives Left: {self.lives_left}\n\n")
             self.active_phrase.display(self.guesses)
             self.user_guess = self.get_guess()
@@ -62,8 +62,6 @@ class Game:
                 self.lives_left -= 1
         if self.lives_left == 0:
             print("Thanks for playing!")
-            time.sleep(2)
-            self.game_intro()
 
     def get_guess(self):
         self.user_guess = input("\n\nEnter a letter: ")

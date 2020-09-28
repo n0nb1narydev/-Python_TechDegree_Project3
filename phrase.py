@@ -17,3 +17,9 @@ class Phrase:
             return True
         else:
             return False
+
+    def check_complete(self, guesses):
+        for letter in self.phrase:
+            if letter not in guesses:
+                return False
+        return True
