@@ -62,7 +62,7 @@ class Game:
 
     def start(self):
         play_again = "Y"
-        while play_again == "Y":
+        while play_again.upper() == "Y":
             while(self.lives_left > 0 and not self.active_phrase.check_complete(self.guesses)):
                 print(f"Lives Left: {self.lives_left}\n\n")
                 self.active_phrase.display(self.guesses)
@@ -79,8 +79,9 @@ class Game:
                     self.lives_left -= 1
             self.game_over()
             self.reset()
-            self.get_play_again()
-        
+            play_again = self.get_play_again()
+        print("Thanks for playing!")
+
 
 
     def get_guess(self):
@@ -96,12 +97,13 @@ class Game:
 
     def get_play_again(self):
         while True:
-            try:
-                play_again = input("Play Again? (Y/N) ")
-            except ValueError:
-                continue
+            play_again = input("Play Again? (Y/N) ")
+            if play_again.upper() == 'Y' or play_again.upper() == "N":
+                return play_again
+                break
             else:
-                return play_again.upper()
+                continue
+
 
     def reset(self):
         self.lives_left = 5
