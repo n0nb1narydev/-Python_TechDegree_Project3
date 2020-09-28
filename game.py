@@ -14,7 +14,7 @@ class Game:
             Phrase("Im a Doctor not an escalator"), 
             Phrase("Today is a good day to die"), 
             Phrase("There are four lights"), 
-            Phrase("Never allow family to stand \nin the way of opportunity"), 
+            Phrase("Never allow family to stand in the way of opportunity"), 
             Phrase("shut up Wesley"), 
             Phrase("I am Locutus of Borg"), 
             Phrase("space the final frontier"), 
@@ -29,9 +29,10 @@ class Game:
             Phrase("this isnt part of my program"), 
             Phrase("i have and always shall be your friend"), 
             Phrase("hes dead jim"), 
+            Phrase("tea earl grey hot"),
             Phrase("beam me up scotty"), 
             Phrase("this is highly illogical"), 
-            Phrase("the needs of the many outweigh\nthe needs of the few or the one"), 
+            Phrase("the needs of the many outweigh the needs of the few or the one"), 
             Phrase("infinite diversity in infinite combinations"),
             ]
         self.active_phrase = self.get_random_phrase()
@@ -41,31 +42,46 @@ class Game:
     def game_intro(self):
         print("          ______ _______ ______ ______    _______ ______  ______ __  __\n         / __  //__  __// __  // __  /   /__  __// __  / / ____// / / /\n        / / /_/   / /  / /_/ // /_/ /      / /  / /_/ / / /__  / //'/'\n        _\ \     / /  / __  //   __/      / /  /   __/ / __ / /  '/'\n      / /_/ /   / /  / / / // /\ \       / /  / /\ \  / /___ / /\ \ \n     /_____/   /_/  /_/ /_//_/  \_\     /_/  /_/  \_\/_____//_/  \_\ \n\n                         P H R A S E  H U N T E R\n\n     .--.      .-'.      .--.      .--.      .--.      .--.      .`-.      .--.\n:::::.\::::::::.\::::::::.\::::::::.\::::::::.\::::::::.\::::::::.\::::::::.\ \n'      `--'      `.-'      `--'      `--'      `--'      `-.'      `--'      `\n\n")
         print("                              N- New Game\n                              Q- Quit\n\n")
-        option =input("Press 'N' to start a new game or 'Q' to quit: ")
-        if option.upper() == 'N':
-            self.start()
-            pass
-        elif option.upper() == 'Q':
-            print("Thank you for playing!")
+        self.option = None
+        while self.option != "N" or self.option != "Q":
+            try:
+                self.option =input("Press 'N' to start a new game or 'Q' to quit: ")
+            except ValueError:
+                self.option =input("Press 'N' to start a new game or 'Q' to quit: ")
+            else:
+                if self.option.upper() == 'N':
+                    self.start()
+                    break
+                elif self.option.upper() == 'Q':
+                    print("Thank you for playing!")
+                    break
 
     def get_random_phrase(self):
-        self.num = random.randrange(0, 26)
+        self.num = random.randrange(0, 27)
         return self.phrases[self.num]
 
     def start(self):
         while(self.lives_left > 0 and not self.active_phrase.check_complete(self.guesses)):
             print(f"Lives Left: {self.lives_left}\n\n")
             self.active_phrase.display(self.guesses)
-            self.user_guess = self.get_guess()
-            self.guesses.append(self.user_guess)
+            try:
+                self.user_guess = self.get_guess()
+                if len(self.user_guess) > 1 or not self.user_guess.isalpha():
+                    raise ValueError ("Please enter one valid letter.")
+            except ValueError as error:
+                print(f"({error})")
+                self.user_guess = input("\n\nEnter a letter: ")
+            else:
+                self.guesses.append(self.user_guess)
             if not self.active_phrase.check_guess(self.user_guess):
                 self.lives_left -= 1
         self.game_over()
 
 
     def get_guess(self):
-        self.user_guess = input("\n\nEnter a letter: ")
-        return self.user_guess
+            self.user_guess = input("\n\nEnter a letter: ")
+
+            return self.user_guess.lower()
 
     def game_over(self):
         if self.lives_left == 0: 
