@@ -23,7 +23,7 @@ class Game:
             Phrase("seek out new life and new civilizations"), 
             Phrase("to boldly go where no one has gone before"), 
             Phrase("you are my sunshine"), 
-            Phrase("hes been stricken by the pon farr"),
+            Phrase("hes been seized by the pon farr"),
             Phrase("comfort is irrelevant were here to work"), 
             Phrase("please state the nature of the medical emergency"), 
             Phrase("this isnt part of my program"), 
@@ -61,34 +61,50 @@ class Game:
         return self.phrases[self.num]
 
     def start(self):
-        while(self.lives_left > 0 and not self.active_phrase.check_complete(self.guesses)):
-            print(f"Lives Left: {self.lives_left}\n\n")
-            self.active_phrase.display(self.guesses)
-            try:
-                self.user_guess = self.get_guess()
-                if len(self.user_guess) > 1 or not self.user_guess.isalpha():
-                    raise ValueError ("Please enter one valid letter.")
-            except ValueError as error:
-                print(f"({error})")
-                self.user_guess = input("\n\nEnter a letter: ")
-            else:
-                self.guesses.append(self.user_guess)
-            if not self.active_phrase.check_guess(self.user_guess):
-                self.lives_left -= 1
-        self.game_over()
+        play_again = "Y"
+        while play_again == "Y":
+            while(self.lives_left > 0 and not self.active_phrase.check_complete(self.guesses)):
+                print(f"Lives Left: {self.lives_left}\n\n")
+                self.active_phrase.display(self.guesses)
+                try:
+                    self.user_guess = self.get_guess()
+                    if len(self.user_guess) > 1 or not self.user_guess.isalpha():
+                        raise ValueError ("Please enter one valid letter.")
+                except ValueError as error:
+                    print(f"({error})")
+                    continue
+                else:
+                    self.guesses.append(self.user_guess)
+                if not self.active_phrase.check_guess(self.user_guess):
+                    self.lives_left -= 1
+            self.game_over()
+            self.reset()
+            self.get_play_again()
+        
 
 
     def get_guess(self):
             self.user_guess = input("\n\nEnter a letter: ")
-
             return self.user_guess.lower()
 
     def game_over(self):
         if self.lives_left == 0: 
-            print("\n      )      COMPUTER                                      \n     (                                                     \n      )        TEA                                         \n  _.-~(~-.                                                 \n (@\`---'/.      EARL GREY                                )\n('  `._.'  `)                                            ( \n `-..___..-'       HOT                                    )\n                                              .-.,--^--.  _\n                                              \\| `---' |//\n                                               \|        / \n                                               _\_______/_ \n\n     H A V E  S O M E  T E A  A N D  T R Y  A G A I N!")
+            print("\n      )      COMPUTER                                      \n     (                                                     \n      )        TEA                                         \n  _.-~(~-.                                                 \n (@\`---'/.      EARL GREY                                )\n('  `._.'  `)                                            ( \n `-..___..-'       HOT                                    )\n                                              .-.,--^--.  _\n                                              \\| `---' |//\n                                               \|        / \n                                               _\_______/_ \n\n     H A V E  S O M E  T E A  A N D  T R Y  A G A I N!\n\n")
         else:
             print(f"You guessed the phrase: {self.active_phrase.phrase}")
-            print("  ____              _       _ \n / __ \            | |     | |\n| |  | | __ _ _ __ | | __ _| |\n| |  | |/ _` | '_ \| |/ _` | |\n| |__| | (_| | |_) | | (_| |_|\n \___\_\\__,_| .__/|_|\__,_(_)\n             | |              \n             |_|              \n\n         S U C C E S S!")
+            print("  ____              _       _ \n / __ \            | |     | |\n| |  | | __ _ _ __ | | __ _| |\n| |  | |/ _` | '_ \| |/ _` | |\n| |__| | (_| | |_) | | (_| |_|\n \___\_\\__,_| .__/|_|\__,_(_)\n             | |              \n             |_|              \n\n         S U C C E S S!\n\n")
 
-# game = Game()
-# print(len(game.phrases))
+    def get_play_again(self):
+        while True:
+            try:
+                play_again = input("Play Again? (Y/N) ")
+            except ValueError:
+                continue
+            else:
+                return play_again.upper()
+
+    def reset(self):
+        self.lives_left = 5
+        self.guesses= [" "]
+        self.active_phrase = self.get_random_phrase()
+
