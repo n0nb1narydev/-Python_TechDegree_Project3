@@ -34,6 +34,7 @@ class Game:
             Phrase("this is highly illogical"), 
             Phrase("the needs of the many outweigh the needs of the few or the one"), 
             Phrase("infinite diversity in infinite combinations"),
+            Phrase("trouble with tribbles"),
             ]
         self.active_phrase = self.get_random_phrase()
         self.guesses = [" "]
@@ -57,7 +58,7 @@ class Game:
                     break
 
     def get_random_phrase(self):
-        self.num = random.randrange(0, 27)
+        self.num = random.randrange(0, 28)
         return self.phrases[self.num]
 
     def start(self):
